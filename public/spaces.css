@@ -3,10 +3,9 @@ body {
   margin: 0;
 }
 
-.form-container {
-  width: 50%;
+.container {
+  width: 80%;
   margin: auto;
-  padding-bottom: 2em;
 }
 
 .top-container {
@@ -28,4 +27,14 @@ body {
 
 .logo {
   height: 150px;
+}
+
+.heading-container {
+  text-align: center;
+}
+
+.heading-container a {
+  text-decoration: none;
+  color: rgba(105, 161, 210, 0.708);
+  /* color: rgb(218, 165, 72); */
 }

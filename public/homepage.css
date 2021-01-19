@@ -6,7 +6,6 @@ body {
 .form-container {
   width: 50%;
   margin: auto;
-  padding-bottom: 2em;
 }
 
 .top-container {
@@ -22,6 +21,7 @@ body {
 .button-container a {
   text-decoration: none;
 }
+
 .nav-btn {
   margin: 0.4em;
 }
