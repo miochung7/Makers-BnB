@@ -9,7 +9,6 @@ class MakersBnb < Sinatra::Base
   
   post '/spaces' do
     User.sign_up(params['email'], params['password'])
-    p params
     redirect('/spaces')
   end
   
