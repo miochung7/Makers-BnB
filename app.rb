@@ -1,8 +1,14 @@
 require 'sinatra/base'
+require './lib/space'
+require './lib/database_connection'
+require './lib/database_connection_setup'
 
 class MakersBnb < Sinatra::Base
+  
+  enable :sessions, :method_override
 
   get '/' do
+
     erb(:index)
   end
   
@@ -21,6 +27,11 @@ class MakersBnb < Sinatra::Base
 
   get '/spaces/new' do
     erb(:'spaces/new')    
+  end
+
+  post '/spaces' do
+    Space.create_space(name: params[:name], description: params[:description], price_per_night: params[:price_per_night], available_from: params[:available_from], available_to: params[:available_to])
+    redirect('/spaces')
   end
 
   post '/logout' do
