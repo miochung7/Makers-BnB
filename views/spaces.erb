@@ -12,17 +12,19 @@
   </head>
   <body>
 
-   <div class="top-container">
-    <div class="logo-container">
-      <img class="logo" src="/images/Logo.png">
+  <nav class="navbar navbar-light" id="nav">
+    <a class="navbar-brand" href="#">
+      <img src="/images/logo1.png" width="50" height="50" alt="">
+    </a>
+    <div class="nav-container">
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>   
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link" href="/login">Login</a>    
+      </li>
     </div>
-    <div class="button-container"> 
-      <form action="/logout" method="post">
-        <button class="btn btn-primary nav-btn"><a href="/login" style="color: #FFFFFF;">About</button></a>
-        <button class="btn btn-primary nav-btn" id="logout">Logout</button>
-      </form>
-    </div>
-  </div>
+  </nav>
 
   <div class="container">
     <div class="heading-container"> 

@@ -3,32 +3,24 @@ body {
   margin: 0;
 }
 
+#nav {
+  padding: 0;
+}
+
+.nav-item {
+  display: inline-block;
+}
+
+.nav-container {
+  list-style: none;
+  display: inline-flex;
+  flex-direction: row;
+}
+
 .container {
   width: 80%;
   margin: auto;
 }
-
-.top-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.button-container {
-  align-self: flex-start;
-}
-
-.button-container a {
-  text-decoration: none;
-}
-.nav-btn {
-  margin: 0.4em;
-}
-
-.logo {
-  height: 150px;
-}
-
 .heading-container {
   text-align: center;
 }

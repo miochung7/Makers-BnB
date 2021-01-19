@@ -9,23 +9,20 @@ body {
   padding-bottom: 2em;
 }
 
-.top-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+#nav {
+  padding: 0;
 }
 
-.button-container {
-  align-self: flex-start;
+.nav-container {
+  list-style: none;
+  display: inline-flex;
+  flex-direction: row;
 }
 
-.button-container a {
+.nav-container a {
   text-decoration: none;
 }
-.nav-btn {
-  margin: 0.4em;
-}
 
-.logo {
-  height: 150px;
+.nav-item {
+  display: inline-block;
 }
