@@ -8,7 +8,6 @@ class MakersBnb < Sinatra::Base
   enable :sessions, :method_override
 
   get '/' do
-
     erb(:index)
   end
   
