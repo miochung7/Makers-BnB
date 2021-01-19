@@ -15,9 +15,10 @@ feature 'Space' do
     fill_in('available to', with: '12/31/2021')
     click_button('Submit')
 
-    spaces = Space.all
-    bookmark = Space.create_space(name: 'Penthouse in Canary Wharf', description: '2 bed penthouse with lovely panoramic views across Canary Wharf', price_per_night: '120', available_from: '01/01/2021', available_to: '12/31/2021')
 
-    expect(spaces).to include('Penthouse in Canary Wharf')
+    bookmark = Space.create_space(name: 'Penthouse in Canary Wharf', description: '2 bed penthouse with lovely panoramic views across Canary Wharf', price_per_night: '120', available_from: '01/01/2021', available_to: '12/31/2021')
+    spaces = Space.all
+    expect(spaces).to include(have_attributes(name: 'Penthouse in Canary Wharf'))
+    
   end
 end
