@@ -10,11 +10,12 @@ class MakersBnb < Sinatra::Base
   get '/' do
     erb(:index)
   end
-  
-  post '/spaces' do
+
+  # Sign up button directs to /spaces
+  post '/' do
     redirect('/spaces')
   end
-  
+   
   get '/spaces' do
     @spaces = [
       'Cottage in Cotswold',
