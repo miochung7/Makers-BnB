@@ -37,11 +37,6 @@ class MakersBnb < Sinatra::Base
     end
     #redirect('/')
   end
-
-  post '/spaces' do
-
-
-  end
    
   get '/spaces' do
     # @spaces = [
