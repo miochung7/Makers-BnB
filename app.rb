@@ -2,6 +2,7 @@ require 'sinatra/base'
 
 
 require './lib/users'
+require './lib/space'
 require 'sinatra/flash'
 require './helpers/helpers'
 require 'rack/flash'
@@ -21,7 +22,6 @@ class MakersBnb < Sinatra::Base
     erb(:index)
   end
 
- list_new_space
   # Sign up button directs to /spaces
 
   post '/' do
