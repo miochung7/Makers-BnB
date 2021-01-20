@@ -1,0 +1,1 @@
+CREATE TABLE spaces(space_id SERIAL PRIMARY KEY, user_id INT, name VARCHAR(40), description VARCHAR(200), price_per_night INT, available_from DATE, available_to DATE, FOREIGN KEY (user_id) REFERENCES users(user_id));

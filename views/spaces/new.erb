@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/new_space.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Makers BNB</title>
+  </head>
+  <body>
+
+  <div class="top-container">
+    <h1>List a Space </h1>
+    <form action="/logout" method="post">
+      <button class="btn btn-primary" id="logout">Logout</button>
+    </form>
+  </div>
+
+  <div class="form-container">
+  
+    <form action="/spaces" method ="post" id="form">
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+        <textarea class="form-control" name="description" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Price per night (£)</label>
+        <input type="number" class="form-control" name="price per night" placeholder="£">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Available from (DD/MM/YYYY)</label>
+        <input type="date" class="form-control" name="available from">
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Available to (DD/MM/YYYY)</label>
+        <input type="date" class="form-control" name="available to">
+      </div>
+    </form>
+  </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+  </body>
+</html>
