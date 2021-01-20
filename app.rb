@@ -1,15 +1,36 @@
 require 'sinatra/base'
 require './lib/users'
+require 'sinatra/flash'
+require './helpers/helpers'
+require 'rack/flash'
+
+
 
 class MakersBnb < Sinatra::Base
+  enable :sessions
+  register Sinatra::Flash
+  #use Rack::Flash, :sweep => true
 
   get '/' do
+    #flash.now[:notice] = "Hooray, Flash is working!"
     erb(:index)
   end
-  
+
+  post '/' do
+    if user_exists?(params['email'])
+      #flash[:error] = "Invalid message"
+      flash[:alert_danger] = "You already have an account, try logging in instead"
+      redirect'/'
+    else
+      User.sign_up(params['email'], params['password'])
+      #flash[:success] = "Message saved successfully."
+      redirect('/spaces')
+    end
+    #redirect('/')
+  end
+
   post '/spaces' do
-    User.sign_up(params['email'], params['password'])
-    redirect('/spaces')
+
   end
   
   get '/spaces' do
@@ -27,6 +48,10 @@ class MakersBnb < Sinatra::Base
 
   post '/logout' do
     redirect('/')
+  end
+  
+  get '/login' do
+    erb(:login)
   end
 
   run! if app_file == $0
