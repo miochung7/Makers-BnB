@@ -30,16 +30,28 @@
     <div class="heading-container"> 
       <h2>Browse a list of spaces</h2>
       <button type="button" class="btn btn-outline-primary" value="List a Space"><a href="/spaces/new">List a Space</a></button>
-    </div>
+    
 
-    <div>
-      <ul>
-        <% @spaces.each do |space| %>
+
+
+    
+
+
+    
+    <div class="card card-container" style="width: 25rem;">
+      <% @spaces.each do |space| %>
+      <br>
+        <h5 class="card-title"><%= space.name %></h5>
+        <p class="card-text"><%= space.description %></p>
+        
+       
+        <a href="#" class="btn btn-primary">Book here</a>
         <br>
-        <%= space %>
-        <% end %>
-      </ul>
+         <% end %>
+      </div>
+      
     </div>
+    
 
   </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->

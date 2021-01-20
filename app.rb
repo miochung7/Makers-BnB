@@ -17,11 +17,12 @@ class MakersBnb < Sinatra::Base
   end
    
   get '/spaces' do
-    @spaces = [
-      'Cottage in Cotswold',
-      'Apartment in Manchester',
-      'Canary Wharf Penthouse'
-    ]
+    # @spaces = [
+    #   'Cottage in Cotswold',
+    #   'Apartment in Manchester',
+    #   'Canary Wharf Penthouse'
+    # ]
+    @spaces = Space.all
     erb(:spaces)
   end
 
