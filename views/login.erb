@@ -12,13 +12,13 @@
   <body>
 
   <% flash.keys.each do |type| %>
-    <div class="alert <%= type.to_s.gsub('_', '-') %> alert-dismissible fade show" role="alert">
-      <%flash[type]%>
+    <div data-alert class="alert <%= type.to_s.gsub('_', '-') %> alert-dismissible fade show" role="alert">
+      <%= flash[type] %>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <% end %>
+ <% end %>
 
   <nav>
   <button style="float: right;" class="btn btn-primary"><a href="/login" style="color: #FFFFFF;">Login</button></a>
