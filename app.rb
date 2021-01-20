@@ -1,4 +1,6 @@
 require 'sinatra/base'
+
+
 require './lib/users'
 require 'sinatra/flash'
 require './helpers/helpers'
@@ -13,10 +15,14 @@ class MakersBnb < Sinatra::Base
   register Sinatra::Flash
   #use Rack::Flash, :sweep => true
 
+
   get '/' do
     #flash.now[:notice] = "Hooray, Flash is working!"
     erb(:index)
   end
+
+ list_new_space
+  # Sign up button directs to /spaces
 
   post '/' do
     if user_exists?(params['email'])
@@ -34,19 +40,26 @@ class MakersBnb < Sinatra::Base
 
   post '/spaces' do
 
+
   end
-  
+   
   get '/spaces' do
-    @spaces = [
-      'Cottage in Cotswold',
-      'Apartment in Manchester',
-      'Canary Wharf Penthouse'
-    ]
+    # @spaces = [
+    #   'Cottage in Cotswold',
+    #   'Apartment in Manchester',
+    #   'Canary Wharf Penthouse'
+    # ]
+    @spaces = Space.all
     erb(:spaces)
   end
 
   get '/spaces/new' do
     erb(:'spaces/new')    
+  end
+
+  post '/spaces' do
+    Space.create_space(name: params[:name], description: params[:description], price_per_night: params[:price_per_night], available_from: params[:available_from], available_to: params[:available_to])
+    redirect('/spaces')
   end
 
   post '/logout' do

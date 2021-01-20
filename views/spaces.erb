@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/spaces.css">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -11,31 +12,48 @@
   </head>
   <body>
 
-  <nav>
-  <form action="/logout" method="post">
-    <button style="float: right;" class="btn btn-primary" id="logout">Logout</button>
-  </form>
+  <nav class="navbar navbar-light" id="nav">
+    <a class="navbar-brand" href="#">
+      <img src="/images/logo1.png" width="50" height="50" alt="">
+    </a>
+    <div class="nav-container">
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>   
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link" href="/">Logout</a>    
+      </li>
+    </div>
   </nav>
-  <p>
-  <h2>Browse a list of spaces</h2>
-  </p>
+
+  <div class="container">
+    <div class="heading-container"> 
+      <h2>Browse a list of spaces</h2>
+      <button type="button" class="btn btn-outline-primary" value="List a Space"><a href="/spaces/new">List a Space</a></button>
+    
 
 
-  <button type="button" class="btn btn-light"><a href="/spaces/new">List a Space</a></button>
+
+    
 
 
-
-
-  <div>
-    <ul>
+    
+    <div class="card card-container" style="width: 25rem;">
       <% @spaces.each do |space| %>
       <br>
-      <%= space %>
-      <% end %>
-    </ul>
+        <h5 class="card-title"><%= space.name %></h5>
+        <p class="card-text"><%= space.description %></p>
+        
+       
+        <a href="#" class="btn btn-primary">Book here</a>
+        <br>
+         <% end %>
+      </div>
+      
+    </div>
+    
+
   </div>
-
-
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
