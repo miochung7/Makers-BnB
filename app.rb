@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require './lib/users'
 
 class MakersBnb < Sinatra::Base
 
@@ -7,6 +8,7 @@ class MakersBnb < Sinatra::Base
   end
   
   post '/spaces' do
+    User.sign_up(params['email'], params['password'])
     redirect('/spaces')
   end
   
