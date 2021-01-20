@@ -8,6 +8,8 @@ require 'rack/flash'
 
 class MakersBnb < Sinatra::Base
   enable :sessions
+  set :session_secret, "something"
+
   register Sinatra::Flash
   #use Rack::Flash, :sweep => true
 
@@ -19,8 +21,9 @@ class MakersBnb < Sinatra::Base
   post '/' do
     if user_exists?(params['email'])
       #flash[:error] = "Invalid message"
-      flash[:alert_danger] = "You already have an account, try logging in instead"
-      redirect'/'
+      flash[:alert_danger] = "You already have an account, you have been redirected to the log in page"
+      erb(:index)
+      redirect'/login'
     else
       User.sign_up(params['email'], params['password'])
       #flash[:success] = "Message saved successfully."
