@@ -9,3 +9,5 @@ gem "sinatra"
 gem "capybara"
 gem "pg"
 gem "shotgun"
+gem "sinatra-flash"
+gem 'rack-flash3'

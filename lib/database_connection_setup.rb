@@ -1,10 +1,8 @@
-require_relative 'database_connection'
+
+require_relative 'database_connection.rb'
 
 if ENV['ENVIRONMENT'] == 'test'
-  p 'I am in test env'
-  DatabaseConnection.setup('makersbnb_test')
+  connection = DatabaseConnection.setup('makersbnb_test')
 else
-  p "I'm not in test ENV"
-  DatabaseConnection.setup('makersbnb')
+  connection = DatabaseConnection.setup('makersbnb')
 end
-
