@@ -13,7 +13,7 @@
     <title>Makers BNB</title>
   </head>
   <body>
-  
+
   <% flash.keys.each do |type| %>
     <div class="alert <%= type.to_s.gsub('_', '-') %> alert-dismissible fade show" role="alert">
       <%= flash[type]%>
@@ -48,15 +48,14 @@
   </div> %>
 
 
-
-  <form action="/" method="post" class="form-container">
+  <form action="/spaces" method="post" class="form-container">
   <h1>Feel at home, anywhere!</h1>
   <p>
   <h2>Sign up to MakersBnB</h2>
   </p>
 
 
-  <form action="/" method="post">
+  <form action="/spaces" method="post">
     <div class="mb-3">
 
       <label for="email" class="form-label">Email address</label>

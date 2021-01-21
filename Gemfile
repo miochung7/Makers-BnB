@@ -11,3 +11,5 @@ gem "pg"
 gem "shotgun"
 gem "sinatra-flash"
 gem 'rack-flash3'
+gem 'bcrypt'
+gem "rack"

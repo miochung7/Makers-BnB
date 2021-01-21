@@ -4,6 +4,7 @@ require './lib/space'
 require 'sinatra/flash'
 require './helpers/helpers'
 require 'rack/flash'
+require 'rack'
 
 
 
@@ -15,6 +16,20 @@ class MakersBnb < Sinatra::Base
 
   get '/' do
     erb(:index)
+  end
+
+  get '/users/new' do
+    erb :"sessions/new"
+  end
+
+  post '/spaces' do
+    session[:user_id] = 1
+    redirect '/spaces'
+  end
+
+  post '/users' do
+    User.create(email: params[:email], password: params[:password])
+    redirect '/spaces'
   end
 
   # Sign up button directs to /spaces
@@ -33,9 +48,18 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/spaces' do
+    session[:user_id] = 1
+    # Fetch the user from the database, using an ID stored in the session
+    @user = User.find(session[:user_id])
     @spaces = Space.all
-    erb(:spaces)
+    erb :"spaces"
   end
+
+  post '/login' do
+    user = User.log_in(email: params[:email], password: params[:password])
+    redirect('/spaces')
+  end
+
 
 =begin this is new below
   post '/spaces' do
@@ -48,11 +72,6 @@ class MakersBnb < Sinatra::Base
     @space = Space.find(id: params[:id])
     p params[:id]
     erb(:each_space)
-  end
-
-  get '/spaces/new' do
-    # @spaces = Space.find(id: params[:id])
-    erb(:'spaces/new')
   end
 
   post '/new_space' do
@@ -71,16 +90,34 @@ class MakersBnb < Sinatra::Base
     erb(:login)
   end
 
-  #post '/sessions/destroy' do
-    #session.clear
-    #flash[:notice] = 'You have signed out.'
-  #  redirect('/')
-  #end
+=begin
+  get '/sessions/new' do
+    erb :"sessions/new"
+  end
+=end
+
+  post '/login' do
+    user = User.authenticate(email: params[:email], password: params[:password])
+
+    if user
+    session[:user_id] = 1
+    redirect('/login')
+    else
+      flash[:notice] = 'Please check your email or password.'
+      redirect('/sessions/new')
+    end
+  end
+
+  post '/sessions/destroy' do
+    session.clear
+    flash[:notice] = 'You have signed out.'
+    redirect('/')
+  end
 
   #get '/sessions/new' do
   #  erb :"sessions/new"
   #end
-
+=begin
   post '/login' do
     #if user_exists?(params['email'])
     user = User.authenticate(email: params[:email], password: params[:password])
@@ -92,6 +129,8 @@ class MakersBnb < Sinatra::Base
       redirect('/login')
     end
   end
+=end
+
 =begin
     result = DatabaseConnection.query("SELECT * FROM users WHERE email_address = '#{params[:email]}'")
     user = User.new(result[0]['id'], result[0]['email'], result[0]['password'])
