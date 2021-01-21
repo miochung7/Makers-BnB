@@ -49,7 +49,7 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/spaces/new' do
-    @spaces = Space.find(id: params[:id])
+    # @spaces = Space.find(id: params[:id])
     erb(:'spaces/new')    
   end
 
