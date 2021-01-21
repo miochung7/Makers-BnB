@@ -1,0 +1,23 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.form-container {
+  width: 50%;
+  margin: auto;
+}
+
+nav {
+  padding: 0;
+}
+
+.nav-container {
+  list-style: none;
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.nav-item {
+  display: inline-block;
+}
