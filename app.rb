@@ -44,8 +44,12 @@ class MakersBnb < Sinatra::Base
     #   'Apartment in Manchester',
     #   'Canary Wharf Penthouse'
     # ]
-    @spaces = Space.all
+    p @spaces = Space.all
     erb(:spaces)
+  end
+
+  post '/spaces/:id' do
+    erb(:spaces)  
   end
 
   get '/spaces/new' do
