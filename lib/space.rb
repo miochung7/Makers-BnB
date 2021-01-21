@@ -26,6 +26,18 @@ class Space
       available_to: result[0]['available_to'])
   end
 
+  def self.filter_dates(available_from:)
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE '#{available_from}' >= available_from;")
+    result.map do |space| 
+      Space.new(id: space['space_id'], 
+            name: space['name'],
+            description: space['description'], 
+            price_per_night: space['price_per_night'],
+            available_from: space['available_from'],
+            available_to: space['available_to'])
+    end
+  end
+
   attr_reader :id, :name, :description, :price_per_night, :available_from, :available_to
   def initialize(id:, name:, description:, price_per_night:, available_from:, available_to:)
     @id = id
