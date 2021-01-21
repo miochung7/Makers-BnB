@@ -25,6 +25,8 @@ class MakersBnb < Sinatra::Base
   # Sign up button directs to /spaces
 
   post '/' do
+    session[:email] = params[:email]
+    "logged in as #{session[:email]}"
     if user_exists?(params['email'])
       #flash[:error] = "Invalid message"
       flash[:alert_danger] = "You already have an account, you have been redirected to the log in page"
@@ -37,7 +39,7 @@ class MakersBnb < Sinatra::Base
     end
     #redirect('/')
   end
-   
+
   get '/spaces' do
     # @spaces = [
     #   'Cottage in Cotswold',
@@ -49,7 +51,7 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/spaces/new' do
-    erb(:'spaces/new')    
+    erb(:'spaces/new')
   end
 
   post '/spaces' do
@@ -57,12 +59,18 @@ class MakersBnb < Sinatra::Base
     redirect('/spaces')
   end
 
-  post '/logout' do
-    redirect('/')
+  get '/logout' do
+    @email = session.delete(:email)
+    p session[:email]
+    redirect '/'
   end
-  
+
   get '/login' do
     erb(:login)
+  end
+
+  get '/sessions/destroy' do
+
   end
 
   run! if app_file == $0
