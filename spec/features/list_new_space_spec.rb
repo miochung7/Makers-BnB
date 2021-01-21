@@ -33,7 +33,7 @@ feature 'Space' do
     fill_in('available_from', with: '01/01/2021')
     fill_in('available_to', with: '12/31/2021')
     click_button('Submit')
-    expect(page.current_path).to eq('/spaces')
+    expect(page.current_path).to eq('/new_space')
   end
   
 end

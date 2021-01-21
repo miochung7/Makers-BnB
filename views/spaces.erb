@@ -34,9 +34,19 @@
       <h2>Book a Space</h2>
       <p>Mauris interdum commodo massa et ultricies. Aliquam non ultrices magna. Vivamus lacinia lacus eu sem tempor dignissim.</p>
       <button type="button" class="btn btn-outline-primary" value="List a Space"><a href="/spaces/new">List a Space</a></button>
-    </div>
+    
 
+    <form action="/spaces" method="post">
+      <label class="form-label">Available from (DD/MM/YY) </label>
+      <input type='date' name='available_from'/>
+      <input type='submit' value='List Spaces' />
+  
+    </form>
+
+     </div>
     <div class="card card-container text-start d-grid gap-2" style="width: 40rem;">
+    
+      
       <% @spaces.each do |space| %>
         <h5 class="card-header"><%= space.name %></h5>
         <p class="card-text description"><%= space.description %></p>
