@@ -39,19 +39,6 @@ class MakersBnb < Sinatra::Base
   end
    
   get '/spaces' do
-
-    # @spaces = [
-    #   'Cottage in Cotswold',
-    #   'Apartment in Manchester',
-    #   'Canary Wharf Penthouse'
-    # ]
-    p @spaces = Space.all
-    erb(:spaces)
-  end
-
-  post '/spaces/:id' do
-    erb(:spaces)  
-
     @spaces = Space.all
     erb(:spaces)
   end
@@ -59,6 +46,13 @@ class MakersBnb < Sinatra::Base
   post '/spaces' do
     @spaces = Space.filter_dates(available_from: params[:available_from])
     erb(:spaces)
+  end
+
+  get '/spaces/:id' do
+    
+    @space = Space.find(id: params[:id])
+    p params[:id]
+    erb(:each_space)
   end
 
   get '/spaces/new' do
@@ -71,15 +65,7 @@ class MakersBnb < Sinatra::Base
     redirect('/spaces')
   end
 
-  post '/spaces/:id/' do
-   
-    redirect('/spaces/:id')
-  end
-
-  # get '/spaces/:id' do
-  #   @spaces = Space.find(id: params[:id])
-  #   erb(:'spaces/id')
-  # end
+ 
 
   post '/logout' do
     redirect('/')
