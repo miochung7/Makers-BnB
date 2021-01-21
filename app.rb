@@ -28,14 +28,14 @@ class MakersBnb < Sinatra::Base
     if user_exists?(params['email'])
       #flash[:error] = "Invalid message"
       flash[:alert_danger] = "You already have an account, you have been redirected to the log in page"
-      erb(:index)
+      #erb(:index)
       redirect'/login'
     else
       User.sign_up(params['email'], params['password'])
-      #flash[:success] = "Message saved successfully."
+      flash[:alert_success] = "You have successfully signed up"
+      erb(:index)
       redirect('/spaces')
     end
-    #redirect('/')
   end
    
   get '/spaces' do
@@ -63,6 +63,19 @@ class MakersBnb < Sinatra::Base
   
   get '/login' do
     erb(:login)
+  end
+
+  post '/login' do
+    if user_exists?(params['email'])
+      flash[:alert_success] = "You have successfully logged in"
+      erb(:index)
+      redirect('/spaces')
+    else
+      flash[:alert_danger] = "Your details were not recognised, please try again"
+      #erb(:index)
+      redirect'/login'
+    end
+
   end
 
   run! if app_file == $0
