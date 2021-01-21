@@ -7,7 +7,7 @@ class Space
   def self.all
     result = DatabaseConnection.query("SELECT * FROM spaces;")
     result.map do |space| 
-      Space.new(id: space['space_id'], 
+      Space.new(id: space['id'], 
                 user_id: space['user_id'],
             name: space['name'],
             description: space['description'], 
@@ -19,7 +19,7 @@ class Space
 
   def self.create_space(name:, description:, price_per_night:, available_from:, available_to:)
     result = DatabaseConnection.query("INSERT INTO spaces (name, description, price_per_night, available_from, available_to) VALUES('#{name}','#{description}','#{price_per_night}','#{available_from}','#{available_to}') RETURNING space_id, name, description, price_per_night, available_from, available_to;")
-    Space.new(id: result[0]['space_id'], 
+    Space.new(id: result[0]['id'], 
       user_id: result['user_id'],
       name: result[0]['name'],
       description: result[0]['description'], 
@@ -31,7 +31,7 @@ class Space
   def self.filter_dates(available_from:)
     result = DatabaseConnection.query("SELECT * FROM spaces WHERE '#{available_from}' >= available_from;")
     result.map do |space| 
-      Space.new(id: space['space_id'], 
+      Space.new(id: space['id'], 
         user_id: space['user_id'],
             name: space['name'],
             description: space['description'], 
@@ -44,7 +44,7 @@ class Space
   def self.find(id:)
     result = DatabaseConnection.query("SELECT * FROM spaces WHERE space_id = '#{id}'")
    
-    space = Space.new(id: result[0]['space_id'], 
+    space = Space.new(id: result[0]['id'], 
       user_id: result[0]['user_id'],
           name: result[0]['name'],
           description: result[0]['description'], 
