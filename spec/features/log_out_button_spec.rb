@@ -5,3 +5,4 @@ feature 'log out button' do
     click_link('Logout')
     expect(session).to eq nil
   end
+end

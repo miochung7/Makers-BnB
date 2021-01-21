@@ -27,51 +27,25 @@
     </a>
     <div class="nav-container">
       <li class="nav-item">
-<<<<<<< HEAD
-        <a class="nav-link" href="#">About</a>
-=======
-        <a class="nav-link" href="#">Spaces</a>   
+        <a class="nav-link" href="#">Spaces</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Requests</a>   
->>>>>>> 8d398c7b4e69d02252b9441acdb2d03dbec6711a
+        <a class="nav-link" href="#">Requests</a>
       </li>
+      <%= session[:user_id] %>
+      <% if session[:user_id] == nil %>
       <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
+        <a class="nav-link" href="/login">Login</a>
+        <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+          <% end %>
       </li>
     </div>
   </nav>
 
   <div class="container">
-<<<<<<< HEAD
-    <div class="heading-container">
-      <h2>Browse a list of spaces</h2>
-      <button type="button" class="btn btn-outline-primary" value="List a Space"><a href="/spaces/new">List a Space</a></button>
-
-
-
-
-
-
-
-
-    <div class="card card-container" style="width: 25rem;">
-      <% @spaces.each do |space| %>
-      <br>
-        <h5 class="card-title"><%= space.name %></h5>
-        <p class="card-text"><%= space.description %></p>
-
-
-        <a href="#" class="btn btn-primary">Book here</a>
-        <br>
-         <% end %>
-      </div>
-
-    </div>
-
-
-=======
-    <div class="heading-container col-4 mx-auto"> 
+    <div class="heading-container col-4 mx-auto">
       <h2>Book a Space</h2>
       <p>Mauris interdum commodo massa et ultricies. Aliquam non ultrices magna. Vivamus lacinia lacus eu sem tempor dignissim.</p>
       <button type="button" class="btn btn-outline-primary" value="List a Space"><a href="/spaces/new">List a Space</a></button>
@@ -81,16 +55,15 @@
       <% @spaces.each do |space| %>
         <h5 class="card-header"><%= space.name %></h5>
         <p class="card-text description"><%= space.description %></p>
-          
+
         <div class="d-grid col-3 mx-auto">
           <a href="#" class="btn btn-outline-primary">Book here</a>
         </div>
         <br>
-   
+
       <% end %>
     </div>
-  
->>>>>>> 8d398c7b4e69d02252b9441acdb2d03dbec6711a
+
   </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

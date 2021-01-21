@@ -1,10 +1,15 @@
-feature 'Login' do
-  scenario 'existing user can log in' do
-    visit('/')
-    signed_in
-    #logout when this feature is introduced
-    log_in
-    expect(current_path).to eq('/spaces')
-  end
+feature 'authentication' do
+  it 'a user can sign in' do
+    # Create a test user
+    User.create(email: 'test@example.com', password: 'password123')
 
-  end 
+    # Then sign in as them
+    visit '/'
+    click_button('Login')
+    fill_in(:email, with: 'test@example.com')
+    fill_in(:password, with: 'password123')
+    click_button('Login')
+
+    expect(page).to have_content 'Welcome, test@example.com'
+  end
+end
