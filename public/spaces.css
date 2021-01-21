@@ -16,22 +16,3 @@ body {
   display: inline-flex;
   flex-direction: row;
 }
-
-.container {
-  width: 80%;
-  margin: auto;
-}
-.heading-container {
-  text-align: center;
-}
-
-.heading-container a {
-  text-decoration: none;
-  color: rgba(105, 161, 210, 0.708);
-  /* color: rgb(218, 165, 72); */
-}
-
-.card-container {
-  width: 80%;
-  margin: 1em auto;
-}
