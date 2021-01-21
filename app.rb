@@ -14,11 +14,8 @@ class MakersBnb < Sinatra::Base
   set :session_secret, "something"
 
   register Sinatra::Flash
-  #use Rack::Flash, :sweep => true
-
 
   get '/' do
-    #flash.now[:notice] = "Hooray, Flash is working!"
     erb(:index)
   end
 
@@ -26,7 +23,6 @@ class MakersBnb < Sinatra::Base
 
   post '/' do
     if user_exists?(params['email'])
-      #flash[:error] = "Invalid message"
       flash[:alert_danger] = "You already have an account, you have been redirected to the log in page"
       #erb(:index)
       redirect'/login'
@@ -68,7 +64,7 @@ class MakersBnb < Sinatra::Base
   post '/login' do
     if user_exists?(params['email'])
       flash[:alert_success] = "You have successfully logged in"
-      erb(:index)
+      #erb(:index)
       redirect('/spaces')
     else
       flash[:alert_danger] = "Your details were not recognised, please try again"
