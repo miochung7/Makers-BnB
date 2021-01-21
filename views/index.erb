@@ -13,7 +13,7 @@
     <title>Makers BNB</title>
   </head>
   <body>
-  <%= flash.keys %>
+  
   <% flash.keys.each do |type| %>
     <div class="alert <%= type.to_s.gsub('_', '-') %> alert-dismissible fade show" role="alert">
       <%= flash[type]%>

@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/login.css">
 
 
     <!-- Bootstrap CSS -->
@@ -11,7 +12,7 @@
     <title>Makers BNB</title>
   </head>
   <body>
-  <%= flash.keys %>
+
   <% flash.keys.each do |type| %>
     <div class="alert <%= type.to_s.gsub('_', '-') %> alert-dismissible fade show" role="alert">
       <%= flash[type]%>
@@ -21,14 +22,37 @@
   </div>
   <% end %>
 
+<<<<<<< HEAD
 
   <h1>Log in page</h1>
   <p>
   <h2>Please provide your log in details</h2>
   </p>
 </div>
+=======
+  
+ <nav class="navbar navbar-light" id="nav">
+  <a class="navbar-brand" href="#">
+    <img src="/images/logo1.png" width="50" height="50" alt="">
+  </a>
+  <div class="nav-container">
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>   
+    </li>
+    <li class="nav-item"> 
+      <a class="nav-link" href="/login">Login</a>    
+    </li>
+  </div>
+</nav>
 
-  <form action="/" method="post">
+  
+>>>>>>> 8d398c7b4e69d02252b9441acdb2d03dbec6711a
+
+  <form action="/login" method="post" class="form-container">
+    <h1>Feel at home, anywhere!</h1>
+    <p>
+    <h2>Login to MakersBnB</h2>
+    </p>
     <div class="mb-3">
 
       <label for="email" class="form-label">Email address</label>
@@ -42,7 +66,7 @@
         Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
       </div>
     </div>
-    <input type="submit" class="btn btn-primary" value="Sign Up" />
+    <input type="submit" class="btn btn-primary" value="Login" />
   </form>
 
 
