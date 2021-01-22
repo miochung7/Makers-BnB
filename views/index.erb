@@ -13,7 +13,7 @@
     <title>Makers BNB</title>
   </head>
   <body>
-  <%= flash.keys %>
+
   <% flash.keys.each do |type| %>
     <div class="alert <%= type.to_s.gsub('_', '-') %> alert-dismissible fade show" role="alert">
       <%= flash[type]%>
@@ -25,11 +25,11 @@
 
  <nav class="navbar navbar-light" id="nav">
   <a class="navbar-brand" href="#">
-    <img src="/images/logo1.png" width="50" height="50" alt="">
+    <img src="/images/logo2.png" width="80" height="80" alt="logo">
   </a>
   <div class="nav-container">
     <li class="nav-item">
-      <a class="nav-link" href="#">About</a>   
+      <a class="nav-link" href="/about">About</a>   
     </li>
     <li class="nav-item"> 
       <a class="nav-link" href="/login">Login</a>    
@@ -72,6 +72,7 @@
     </div>
     <input type="submit" class="btn btn-primary" value="Sign Up" />
   </form>
+
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

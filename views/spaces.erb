@@ -14,9 +14,12 @@
 
   <nav class="navbar navbar-light" id="nav">
     <a class="navbar-brand" href="#">
-      <img src="/images/logo1.png" width="50" height="50" alt="">
+      <img src="/images/logo2.png" width="80" height="80" alt="logo">
     </a>
     <div class="nav-container">
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>   
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Spaces</a>   
       </li>
@@ -33,22 +36,23 @@
     <div class="heading-container col-4 mx-auto"> 
       <h2>Book a Space</h2>
       <p>Mauris interdum commodo massa et ultricies. Aliquam non ultrices magna. Vivamus lacinia lacus eu sem tempor dignissim.</p>
-      <button type="button" class="btn btn-outline-primary" value="List a Space"><a href="/spaces/new">List a Space</a></button>
+      <button type="button" class="btn btn-outline-primary" value="List a Space"><a href="/spaces/new" style="text-decoration: none;">List a Space</a></button>
     
 
-    <form action="/spaces" method="post">
-      <label class="form-label">Available from (DD/MM/YY) </label>
-      <input type='date' name='available_from'/>
-      <input type='submit' value='List Spaces' />
+    <form action="/spaces" method="post" style="padding-bottom: 2em;">
+      <label class="form-label" style="padding: 0.5em 0;">Available from (DD/MM/YY) </label>
+      <input type='date' class="btn btn-outline-primary" name='available_from'/>
+      <input type='submit' class="btn btn-outline-primary" value='View Spaces' />
   
     </form>
 
      </div>
-    <div class="card card-container text-start d-grid gap-2" style="width: 40rem;">
+    <div class="card card-container text-start d-grid gap-2" style="width: 35rem;">
     
       
       <% @spaces.each do |space| %>
         <h5 class="card-header"><%= space.name %></h5>
+        <img class="card-img-top" style="width:550px; height:400px;"  src="<%= space.image %>" alt="bnb">
         <h5 class="card-text">£<%= space.price_per_night %> per night</h5>
         <p class="card-text description"><%= space.description %></p>
           
@@ -60,12 +64,13 @@
           </form>
         
         </div>
+         <% end %>
         <br>
-   
-      <% end %>
-    </div>
+      </div>
+     </div>
   
-  </div>
+   
+
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
