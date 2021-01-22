@@ -7,7 +7,7 @@ require 'sinatra/flash'
 require './helpers/helpers'
 require 'rack/flash'
 
-
+require 'simple_calendar'
 
 class MakersBnb < Sinatra::Base
   enable :sessions
