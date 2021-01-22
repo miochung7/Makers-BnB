@@ -4,6 +4,7 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require './spec/sign_in_method'
+require './spec/log_in_method'
 require_relative './setup_test_database'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')

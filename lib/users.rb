@@ -18,14 +18,14 @@ class User
   def self.log_in(email_address, password)
     if user_exists?(email_address)
       entered_password = DatabaseConnection.query("SELECT password FROM users WHERE email_address = '#{email_address}'")
-      if entered_password == password
-        #login
-      else
+      # if entered_password == password
+      #   logged_in? = true
+      # else
         return "Your details are incorrect"
       end
-    else 
+    
       return "Your details are incorrect"
     end
   end
   
-end
+#end

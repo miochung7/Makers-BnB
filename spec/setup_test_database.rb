@@ -8,7 +8,3 @@ def setup_test_database
   connection.exec("TRUNCATE spaces, users;")
 
 end
-
-
-
-#requires reworking to be able to truncate both tables without issue
