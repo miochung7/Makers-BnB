@@ -16,7 +16,7 @@ feature 'Space' do
     # click_button('Submit')
 
 
-    space = Space.create_space(name: 'Penthouse in Canary Wharf', description: '2 bed penthouse with lovely panoramic views across Canary Wharf', price_per_night: '120', available_from: '01/01/2021', available_to: '12/31/2021')
+    space = Space.create_space(name: 'Penthouse in Canary Wharf', description: '2 bed penthouse with lovely panoramic views across Canary Wharf', price_per_night: '120', available_from: '01/01/2021', available_to: '12/31/2021', image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80')
     p space
 
     spaces = Space.all

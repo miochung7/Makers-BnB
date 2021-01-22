@@ -36,7 +36,7 @@ class MakersBnb < Sinatra::Base
   get '/spaces' do
     working = Session.check(session[:id])
     if not working
-      redirect '/login'
+      redirect '/'
     else
     @spaces = Space.all
 
