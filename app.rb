@@ -75,15 +75,20 @@ class MakersBnb < Sinatra::Base
     erb(:spaces)
   end
 
+  get '/spaces/new' do
+    working = Session.check(session[:id])
+    if not working
+      redirect '/login'
+    else
+    # @spaces = Space.find(id: params[:id])
+      erb(:'spaces/new')
+    end
+  end
+
   get '/spaces/:id' do
     @space = Space.find(id: params[:id])
     p params[:id]
     erb(:each_space)
-  end
-
-  get '/spaces/new' do
-    # @spaces = Space.find(id: params[:id])
-    erb(:'spaces/new')
   end
 
   post '/new_space' do
@@ -110,6 +115,11 @@ class MakersBnb < Sinatra::Base
     end
 
   end
+
+  get '/about' do
+    erb(:about)
+  end
+
 
   run! if app_file == $0
 end
