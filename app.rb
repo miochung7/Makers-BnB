@@ -5,6 +5,10 @@ require 'sinatra/flash'
 require './helpers/helpers'
 require 'rack/flash'
 require './lib/session'
+require 'simple_calendar'
+require './lib/calendar.rb'
+
+## To display the calendar in a web browser
 
 
 class MakersBnb < Sinatra::Base
