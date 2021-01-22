@@ -4,7 +4,7 @@ feature 'Sign up' do
     signed_in
     expect(current_path).to eq('/spaces')
   end
-  
+
   scenario 'signing up adds user credentials to database' do
     visit('/')
     signed_in

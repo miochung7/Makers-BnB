@@ -1,12 +1,10 @@
 require 'sinatra/base'
-
-
 require './lib/users'
 require './lib/space'
 require 'sinatra/flash'
 require './helpers/helpers'
 require 'rack/flash'
-
+require './lib/session'
 
 
 class MakersBnb < Sinatra::Base
@@ -33,14 +31,46 @@ class MakersBnb < Sinatra::Base
     else
       User.sign_up(params['email'], params['password'])
       #flash[:success] = "Message saved successfully."
-      redirect('/spaces')
+      redirect('/logged_in')
     end
     #redirect('/')
   end
-   
+
   get '/spaces' do
+    working = Session.check(session[:id])
+    if not working
+      redirect '/login'
+    else
     @spaces = Space.all
     erb(:spaces)
+    end
+  end
+
+  get '/logged_in' do
+    session[:id] = 1
+    redirect '/spaces'
+  end
+
+  post '/logout' do
+    redirect('/login')
+  end
+
+  get '/logout' do
+    session[:id] = nil
+    redirect('/login')
+  end
+
+  post '/logged_in' do
+    redirect '/logged_in'
+  end
+
+  get '/test_session' do
+    working = Session.check(session[:id])
+    if not working
+      redirect '/login'
+    else
+      "page is working"
+    end
   end
 
   post '/spaces' do
@@ -49,7 +79,6 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/spaces/:id' do
-    
     @space = Space.find(id: params[:id])
     p params[:id]
     erb(:each_space)
@@ -57,7 +86,7 @@ class MakersBnb < Sinatra::Base
 
   get '/spaces/new' do
     # @spaces = Space.find(id: params[:id])
-    erb(:'spaces/new')    
+    erb(:'spaces/new')
   end
 
   post '/new_space' do
@@ -65,12 +94,6 @@ class MakersBnb < Sinatra::Base
     redirect('/spaces')
   end
 
- 
-
-  post '/logout' do
-    redirect('/')
-  end
-  
   get '/login' do
     erb(:login)
   end

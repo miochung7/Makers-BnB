@@ -18,10 +18,10 @@ feature 'Space' do
 
     space = Space.create_space(name: 'Penthouse in Canary Wharf', description: '2 bed penthouse with lovely panoramic views across Canary Wharf', price_per_night: '120', available_from: '01/01/2021', available_to: '12/31/2021')
     p space
-    
+
     spaces = Space.all
     expect(spaces).to include(have_attributes(name: 'Penthouse in Canary Wharf'))
-    
+
   end
 
   scenario 'once saved, user should be directed back to /spaces' do
@@ -35,5 +35,5 @@ feature 'Space' do
     click_button('Submit')
     expect(page.current_path).to eq('/new_space')
   end
-  
+
 end
