@@ -36,20 +36,20 @@
 
   <nav class="navbar navbar-light" id="nav">
     <a class="navbar-brand" href="#">
-      <img src="/images/logo1.png" width="100" height="100" alt="">
+      <img src="/images/logo2.png" width="80" height="80" alt="logo">
     </a>
-    <div class="nav-container">
-      <li class="nav-item">
-        <a class="nav-link" href="/spaces">Spaces</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Requests</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
-      </div>
-    </nav>
+    <div class="button-container"> 
+      <form action="/logout" method="post" class="nav-container">
+        <%# <li class="nav-item"> %>
+          <a class="nav-link" href="/about">About</a>
+        <%# </li> %>
+        <%# <li class="nav-item"> %>
+          <button type="submit" class="btn" id="logout"><a href="#">Logout</a></button>
+        <%# </li> %>
+      </form>
+    </div>
+  </nav>
+
 
   <div class="form-container">
     <h1>List a Space </h1>
@@ -61,6 +61,10 @@
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Description</label>
         <textarea class="form-control" name="description" rows="3"></textarea>
+      </div>
+       <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Image URL</label>
+         <input type="text" class="form-control" name="image" placeholder="URL">
       </div>
       <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Price per night (£)</label>

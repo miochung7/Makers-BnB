@@ -14,7 +14,7 @@
 
   <nav class="navbar navbar-light" id="nav">
     <a class="navbar-brand" href="#">
-      <img src="/images/logo1.png" width="50" height="50" alt="">
+      <img src="/images/logo2.png" width="80" height="80" alt="logo">
     </a>
     <div class="nav-container">
       <li class="nav-item">
@@ -29,11 +29,15 @@
     </div>
   </nav>
 
-  <div class="card card-container text-start d-grid gap-2" style="width: 40rem;">
 
+  <div class="card card-container text-start d-grid gap-2" style="width: 35rem;">
+      
         <h5 class="card-header"><%= @space.name %></h5>
         <p class="card-text description"><%= @space.description %></p>
-
+        <img class="card-img-top" style="width:550px; height:400px;" src="<%= @space.image %>" alt="bnb">
+        <form>
+        <input type="submit" class="btn btn-outline-primary" value="Request to Book">
+        </form>
 
     </div>
 
