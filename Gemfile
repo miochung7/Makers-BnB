@@ -11,3 +11,4 @@ gem "pg"
 gem "shotgun"
 gem "sinatra-flash"
 gem 'rack-flash3'
+gem "simple_calendar", "~> 2.0"
