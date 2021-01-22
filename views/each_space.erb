@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/spaces.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Makers BNB</title>
+  </head>
+  <body>
+
+  <nav class="navbar navbar-light" id="nav">
+    <a class="navbar-brand" href="#">
+      <img src="/images/logo1.png" width="50" height="50" alt="">
+    </a>
+    <div class="nav-container">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Spaces</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Requests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Logout</a>
+      </li>
+    </div>
+  </nav>
+
+  <div class="card card-container text-start d-grid gap-2" style="width: 40rem;">
+
+        <h5 class="card-header"><%= @space.name %></h5>
+        <p class="card-text description"><%= @space.description %></p>
+
+
+    </div>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+  </body>
+</html>

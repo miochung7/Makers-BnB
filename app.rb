@@ -1,12 +1,14 @@
 require 'sinatra/base'
-
-
 require './lib/users'
 require './lib/space'
 require 'sinatra/flash'
 require './helpers/helpers'
 require 'rack/flash'
+require './lib/session'
+require 'simple_calendar'
+require './lib/calendar.rb'
 
+## To display the calendar in a web browser
 
 
 class MakersBnb < Sinatra::Base
@@ -27,34 +29,71 @@ class MakersBnb < Sinatra::Base
       redirect'/login'
     else
       User.sign_up(params['email'], params['password'])
+
       flash[:alert_success] = "You have successfully signed up"
-      redirect('/spaces')
+      redirect('/logged_in')
+
     end
   end
-   
+
   get '/spaces' do
-    # @spaces = [
-    #   'Cottage in Cotswold',
-    #   'Apartment in Manchester',
-    #   'Canary Wharf Penthouse'
-    # ]
+    working = Session.check(session[:id])
+    if not working
+      redirect '/login'
+    else
     @spaces = Space.all
     erb(:spaces)
+    end
   end
 
-  get '/spaces/new' do
-    erb(:'spaces/new')    
+  get '/logged_in' do
+    session[:id] = 1
+    redirect '/spaces'
+  end
+
+  post '/logout' do
+    redirect('/login')
+  end
+
+  get '/logout' do
+    session[:id] = nil
+    redirect('/login')
+  end
+
+  post '/logged_in' do
+    redirect '/logged_in'
+  end
+
+  get '/test_session' do
+    working = Session.check(session[:id])
+    if not working
+      redirect '/login'
+    else
+      "page is working"
+    end
   end
 
   post '/spaces' do
+    @spaces = Space.filter_dates(available_from: params[:available_from])
+    erb(:spaces)
+  end
+
+  get '/spaces/:id' do
+    @space = Space.find(id: params[:id])
+    p params[:id]
+    erb(:each_space)
+  end
+
+  get '/spaces/new' do
+    # @spaces = Space.find(id: params[:id])
+    erb(:'spaces/new')
+  end
+
+  post '/new_space' do
     Space.create_space(name: params[:name], description: params[:description], price_per_night: params[:price_per_night], available_from: params[:available_from], available_to: params[:available_to])
     redirect('/spaces')
   end
 
-  post '/logout' do
-    redirect('/')
-  end
-  
   get '/login' do
     erb(:login)
   end
