@@ -12,8 +12,17 @@
   </head>
   <body>
 
+  <% flash.keys.each do |type| %>
+    <div class="alert <%= type.to_s.gsub('_', '-') %> alert-dismissible fade show" role="alert">
+      <%= flash[type]%>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <% end %>
+
   <nav class="navbar navbar-light" id="nav">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
       <img src="/images/logo2.png" width="80" height="80" alt="logo">
     </a>
     <div class="nav-container">
@@ -22,18 +31,20 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Spaces</a>   
+
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Requests</a>   
+        <a class="nav-link" href="#">Requests</a>
       </li>
-      <li class="nav-item"> 
-        <a class="nav-link" href="/">Logout</a>    
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
       </li>
-    </div>
-  </nav>
+      </div>
+    </nav>
+
 
   <div class="container">
-    <div class="heading-container col-4 mx-auto"> 
+    <div class="heading-container col-4 mx-auto">
       <h2>Book a Space</h2>
       <p>Mauris interdum commodo massa et ultricies. Aliquam non ultrices magna. Vivamus lacinia lacus eu sem tempor dignissim.</p>
       <button type="button" class="btn btn-outline-primary" value="List a Space"><a href="/spaces/new" style="text-decoration: none;">List a Space</a></button>
@@ -55,21 +66,23 @@
         <img class="card-img-top" style="width:550px; height:400px;"  src="<%= space.image %>" alt="bnb">
         <h5 class="card-text">£<%= space.price_per_night %> per night</h5>
         <p class="card-text description"><%= space.description %></p>
-          
+
         <div class="d-grid col-3 mx-auto">
-        
+
 
           <form action="/spaces/<%= space.id %>" method="get">
             <input type='submit' class="btn btn-outline-primary" value='Book here' id="edit_btn" />
           </form>
-        
+
         </div>
          <% end %>
         <br>
+
       </div>
      </div>
   
    
+
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
