@@ -5,8 +5,6 @@ require 'sinatra/flash'
 require './helpers/helpers'
 require 'rack/flash'
 require './lib/session'
-require 'simple_calendar'
-require './lib/calendar.rb'
 
 ## To display the calendar in a web browser
 
@@ -102,7 +100,7 @@ class MakersBnb < Sinatra::Base
     if user_exists?(params['email'])
       if correct_password?(params['email'], params['password'])
         flash[:alert_success] = "You have successfully logged in"
-        redirect('/spaces')
+        redirect('/logged_in')
       else 
         flash[:alert_danger] = "Your password was incorrect, please try again"
         redirect'/login'
