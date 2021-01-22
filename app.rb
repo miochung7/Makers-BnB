@@ -120,6 +120,5 @@ class MakersBnb < Sinatra::Base
     erb(:about)
   end
 
-
   run! if app_file == $0
 end
